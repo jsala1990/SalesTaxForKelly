@@ -16,7 +16,16 @@ describe "open file" do
     lambda { parser.file_open }.should raise_exception Errno::ENOENT 
   end
    it "should read first Line correctly" do
+     file_by_line=["1 book at 12.49\n","1 music CD at 14.99\n","1 chocolate bar at 0.85"] 
      parser = Parser.new "input_data/test_input_1.txt"
-     parser.file_open.should == "1 book at 12.49\n"
+     parser.file_open.should == file_by_line
    end
 end
+
+describe "#parse" do 
+  it "should get the first number" do
+    parser = Parser.new "input_data/test_input_1.txt"
+    parser.seperate_line("1 book at 12.49\n").should include 1.0,12.49
+  end
+end
+

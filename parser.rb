@@ -6,14 +6,12 @@ class Parser
     @file_location=file_location 
   end
   def file_open
+       temp = []
        file = File.open(@file_location, 'r')
-       file.readline 
+       file.each { |x| temp << x}
+       return temp
   end
-  def to_s
-    "Receipt: #{receipt.readline}"
+  def seperate_line line_to_seperate
+  line_to_seperate.scan(/\d+[.]+\d+|\d/).map { |n| n.to_f }
   end
-  def quepasa
-
-  end
-
 end
