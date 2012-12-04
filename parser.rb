@@ -12,6 +12,6 @@ class Parser
        return temp
   end
   def seperate_line line_to_seperate
-  line_to_seperate.scan(/\d+[.]+\d+|\d/).map { |n| n.to_f }
+  line_to_seperate.scan(/\d+\.\d+|\d+|book/).map { |n| n }
   end
 end

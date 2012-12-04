@@ -25,7 +25,7 @@ end
 describe "#parse" do 
   it "should get the first number" do
     parser = Parser.new "input_data/test_input_1.txt"
-    parser.seperate_line("1 book at 12.49\n").should include 1.0,12.49
+    parser.seperate_line("1 book at 12.49\n").should include "1","book","12.49"
   end
 end
 
