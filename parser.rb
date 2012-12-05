@@ -8,10 +8,20 @@ class Parser
   def file_open
        temp = []
        file = File.open(@file_location, 'r')
-       file.each { |x| temp << x}
+       file.each { |x| temp << seperate_line(x)}
        return temp
   end
   def seperate_line line_to_seperate
-  line_to_seperate.scan(/\d+\.\d+|\d+|book/).map { |n| n }
+    hash_everything line_to_seperate.split(" ")
+
+  end
+  def hash_everything array_to_hash
+    new_hash = {
+    :quantity => array_to_hash.first,
+    :name => array_to_hash[1..(array_to_hash.length-2)],
+    :price => array_to_hash.last
+    }
+    return new_hash 
+    
   end
 end
