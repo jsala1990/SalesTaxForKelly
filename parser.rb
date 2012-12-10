@@ -1,6 +1,6 @@
 class Parser
 
-  attr_accessor :file_location
+  #attr_accessor :file_location
   
   def initialize file_location
     @file_location=file_location 

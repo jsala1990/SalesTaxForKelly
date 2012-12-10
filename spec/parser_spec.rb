@@ -2,7 +2,7 @@ require_relative '../parser'
 
 describe "initialize" do
   it "should open file" do 
-    lambda { Parser.new "../input_data/test_input_1.txt" }.should_not raise_exception NameError    
+    lambda { Parser.new "input_data/test_input_1.txt" }.should_not raise_exception NameError    
   end
 end
 
