@@ -1,5 +1,5 @@
 class SalesTax	
-	BASIC_TAX = 0.10 ##:precision => 8, :scale => 2
+	BASIC_TAX = 0.10 
 	EXEMPT_TAX = 0.00
 	IMPORT_TAX = 0.05
 	EXEMPT = ["books", "book","food","medical","chocolates","chocolate","pills"]
@@ -29,12 +29,12 @@ class SalesTax
   	def tax
   	@total_tax = 0.0
 		if is_imported? == true
-			@total_tax = 0.05 + @total_tax
+			@total_tax = IMPORT_TAX + @total_tax
 		end
 		if is_exempt? == true
-			@total_tax = 0.0 + @total_tax
+			@total_tax = EXEMPT_TAX + @total_tax
 		else
-			@total_tax = 0.10 + @total_tax
+			@total_tax = BASIC_TAX + @total_tax
 		end
 	@total_tax = total_tax.to_f.round(2)
 	end
