@@ -1,4 +1,4 @@
-require_relative '../parser'
+require 'spec_helper'
 
 describe "initialize" do
   it "should open file" do 
