@@ -1,20 +1,22 @@
 class Good
-  attr_accessor :total_price
-  EXEMPT = ["books", "book","food","medical","chocolates","chocolate","pills"]
-  IMPORTED = ["import","imported"]
+    attr_accessor :total_price
 
-  def initialize product, price
-    @product = product[/([a-zA-Z]+.)+/]
-    @total_price = price.to_f
-  end
+    def initialize good, price
+        @good = good[/([a-zA-Z]+.)+/]
+        @total_price = price
+    end
 
-  def total_tax
-    sales_tax = SalesTax.new(@product).tax
-    return sales_tax
-  end
+    def total_tax
+        sales_tax = SalesTax.new(@good).tax
+        return sales_tax
+    end
 
-  def price
-    ((1 + total_tax) * @total_price.to_f).round(2)
-  end
+    def total_tax_amount
+        sales_tax = SalesTax.new(@good).tax
+        return (sales_tax*@total_price).round(2)
+    end
 
+    def price
+        ((1 + total_tax) * @total_price).round(2)
+    end
 end
