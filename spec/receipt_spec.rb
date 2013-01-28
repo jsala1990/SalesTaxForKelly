@@ -47,23 +47,6 @@ describe Receipt do
 			@receipt.print(parsed_line).should eql "1 imported bottle of perfume: 32.19"
 		end
 	end
-	# describe "#open_file" do
- #    	it "should open correct file" do
- #    		parser = Receipt.new "input_data/test_input_1.txt"
- #    		lambda { parser.file_open }.should_not raise_exception Errno::ENOENT
- #    	end
- #    	it "should not open incorrect file" do
-	#     	parser = Receipt.new "input_data/test_input_6.txt"
-	#     	lambda { parser.file_open }.should raise_exception Errno::ENOENT 
-	#   	end
-	#   	it "should read first Line correctly" do
-	# 	    fake_line1 = "1 book at 12.49"
-	# 	    fake_line2 = "1 music CD at 14.99"
-	# 	    fake_line3 = "1 chocolate bar at 0.85"
-	# 	    parser = Receipt.new "input_data/test_input_1.txt"
-	# 	    parser.file_open.should == [fake_line1,fake_line2,fake_line3]
- #    	en
- #  	end
   	describe "#print_receipt" do
   		it "should print everything, given a location" do
   			fake_file = ["1 book: 12.49","1 music CD: 16.49",
@@ -72,14 +55,14 @@ describe Receipt do
   			new_receipt = Receipt.new "input_data/test_input_1.txt"
   			new_receipt.print_receipt.should == fake_file
   		end
-#    #    it "should print everything, given a location" do
-    #     fake_file = ["1 imported box of chocolates: 10.50",
-    #         "1 imported bottle of perfume: 54.65",
-    #         "Sales Taxes: 7.65",
-    #         "Total: 65.15"]
-    #     new_receipt = Receipt.new "input_data/test_input_2.txt"
-    #     new_receipt.print_receipt.should == fake_file
-    #   end
+      it "should print everything, given a location" do
+        fake_file = ["1 imported box of chocolates: 10.5",
+            "1 imported bottle of perfume: 54.62",
+            "Sales Taxes: 7.63",
+            "Total: 65.12"]
+        new_receipt = Receipt.new "input_data/test_input_2.txt"
+        new_receipt.print_receipt.should == fake_file
+      end
     #   it "should print everything, given a location" do
     #     fake_file = ["1 imported bottle of perfume: 32.19",
     #         "1 bottle of perfume: 20.89",

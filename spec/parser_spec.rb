@@ -42,17 +42,22 @@ describe "#parse" do
         parser.parse("1 book at 12.49").should eql expected_result
     end
 end
-#describe "#save_file" do
-#    it "should save all of receipt into file" do
-#        input = ["1 book: 12.49","1 music CD: 16.49","1 chocolate bar: 0.85"] 
-#        parser.save_file input
-#
-#        it "should have a new file" do
-#            check_new_file = Parser.new "input_data/test_output_1.txt"
-#            lambda {check_new_file.open_file}.should_not raise_exception Errno::ENOENT
-#        end
-#    end
-# end
+describe "#save_file" do
+    time = Time.now
+    parser = Parser.new "input_data/test_input_1.txt"
+    input = ["1 book: 12.49","1 music CD: 16.50","1 chocolate bar: 0.85"] 
+    parser.save_file(input, time)
+
+    it "should save all of receipt into file" do
+        output_file = "input_data/test_output_1.txt" + time.to_s
+        check_new_file = Parser.new(output_file)
+        lambda {check_new_file.open_file}.should_not raise_exception Errno::ENOENT
+    end
+    # it "should have exact contents" do 
+    #     check_new_file = Parser.new(output_file).should eql "hi"
+    # end
+
+end
 
 # describe "hash" do
 #     it "should make everything a hashmap!" do

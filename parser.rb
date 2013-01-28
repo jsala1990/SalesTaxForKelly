@@ -21,9 +21,12 @@ class Parser
         {:quantity => quantity, :good => good, :price => pre_tax_price}
     end
     
-    # def save_file input
-    #     file = File.write("input_data/test_output_1.txt", 'r').each_line{ |s|
-
-    #     }
-    # end
+    def save_file input, time
+        output_file = "input_data/test_output_1.txt" + time.to_s
+        aFile = File.new(output_file,"w")
+        input.each { |x|
+            aFile.puts x 
+        }
+        aFile.close
+    end
 end

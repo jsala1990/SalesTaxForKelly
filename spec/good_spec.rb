@@ -36,7 +36,7 @@ describe Good do
 		end
 		it "should be correct for box of imported chocolates" do
 			good = Good.new "box of imported chocolates", 10.00
-			good.price.should eql 10.5
+			good.price.should eql 10.50
 		end
 		it "should be correct for chocolate bar" do
 			good = Good.new "chocolate bar", 0.85

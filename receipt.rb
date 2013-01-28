@@ -13,8 +13,8 @@ class Receipt
     def print line
         good = Good.new line[:good],line[:price]
         @total_price = @total_price + good.price
-        @total_tax = @total_tax + good.total_tax_amount
-        new_line = [line[:quantity],line[:good],good.price]
+        @total_tax = (@total_tax + good.total_tax_amount).round(2)
+        new_line = [line[:quantity],line[:good],(good.price.round(2)).to_s]
         new_line.join(" ").gsub(/ at /, ":")
     end
 
@@ -24,7 +24,9 @@ class Receipt
         }
         @list_of_goods << "Sales Taxes: " + (@total_tax.round(2)).to_s
         @list_of_goods << "Total: " + @total_price.to_s
-        # parser.save @list_of_goods
+        parser.save_file(@list_of_goods,Time.now)
+        @list_of_goods
+
     end
     def add_item good
         line = @parser.parse good
